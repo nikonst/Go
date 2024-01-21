@@ -9,6 +9,11 @@ func main() {
 
 	a = 1
 	b = 2
-
 	fmt.Println("Values of a and b, ", a, " and", b)
+
+	var myBool = true
+	fmt.Println("Reversed value of myBook, ", !myBool)
+
+	str := "This is a string value"
+	fmt.Println("Value of someString, ", str)
 }
