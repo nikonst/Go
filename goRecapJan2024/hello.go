@@ -16,4 +16,7 @@ func main() {
 
 	str := "This is a string value"
 	fmt.Println("Value of someString, ", str)
+
+	var y float32 = 3.4e+38
+	fmt.Printf("Type: %T, value: %v", y, y)
 }
