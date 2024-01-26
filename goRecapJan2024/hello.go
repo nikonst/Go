@@ -23,4 +23,9 @@ func main() {
 	const s1 = "Hello"
 	fmt.Printf("Type: %T, value: %v\n", s1, s1)
 
+	for n := 0; n <= 50; n++ {
+		if n%2 == 0 {
+			fmt.Println("Even ", n)
+		}
+	}
 }
