@@ -18,5 +18,9 @@ func main() {
 	fmt.Println("Value of someString, ", str)
 
 	var y float32 = 3.4e+38
-	fmt.Printf("Type: %T, value: %v", y, y)
+	fmt.Printf("Type: %T, value: %v\n", y, y)
+
+	const s1 = "Hello"
+	fmt.Printf("Type: %T, value: %v\n", s1, s1)
+
 }
