@@ -33,4 +33,28 @@ func main() {
 
 	sort.Ints(numbers)
 	fmt.Println(numbers)
+
+	states := make(map[string]string)
+	fmt.Println(states)
+	states["WA"] = "Washington"
+	states["OR"] = "Oregon"
+	states["CA"] = "California"
+	fmt.Println(states)
+
+	california := states["CA"]
+	fmt.Println(california)
+	fmt.Println(states)
+
+	delete(states, "OR")
+	states["NY"] = "New York"
+	fmt.Println(states)
+
+	states["AZ"] = "Arizona"
+	fmt.Println(states) // sorted
+
+	for k, v := range states {
+		// not sorted
+		fmt.Printf("%v: %v\n", k, v) // key - value
+	}
+
 }
