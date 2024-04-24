@@ -14,6 +14,10 @@ func main() {
 	fmt.Println(s, " ", c)
 	s, c = addAllValues(1, 3, 4, 5, 6, 7)
 	fmt.Println(s, " ", c)
+
+	mary := Person{65, "I am Mary", "Hello everyone"}
+	fmt.Println(mary)
+	mary.introduceYourself()
 }
 
 func voidFunction() {
@@ -30,4 +34,15 @@ func addAllValues(values ...int) (int, int) {
 		t += v
 	}
 	return t, len(values)
+}
+
+type Person struct {
+	Weight int
+	Talk   string
+	Speak  string
+}
+
+// introduceYourself is ...
+func (p Person) introduceYourself() {
+	fmt.Println(p.Talk, p.Speak)
 }
