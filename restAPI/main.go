@@ -19,6 +19,21 @@ type Book struct {
 
 var books = []Book{}
 
+// postAlbums adds an album from JSON received in the request body.
+func postBooks(c *gin.Context) {
+	var newBook Book
+
+	// Call BindJSON to bind the received JSON to
+	// newBook.
+	if err := c.BindJSON(&newBook); err != nil {
+		return
+	}
+
+	// Add the new album to the slice.
+	books = append(books, newBook)
+	c.IndentedJSON(http.StatusCreated, newBook)
+}
+
 func main() {
 	router := gin.Default()
 
@@ -49,6 +64,8 @@ func main() {
 	router.GET("/books", func(context *gin.Context) {
 		context.IndentedJSON(http.StatusOK, books)
 	})
+	router.POST("/books", postBooks)
+
 	router.Run("localhost:9090")
 
 }
