@@ -19,10 +19,6 @@ type Book struct {
 
 var books = []Book{}
 
-func getBooks(context *gin.Context) {
-	context.IndentedJSON(http.StatusOK, books)
-}
-
 func main() {
 	router := gin.Default()
 
@@ -50,6 +46,9 @@ func main() {
 		fmt.Printf("Name: %s, Age: %s, Email: %s\n", book.Id, book.Title, book.Author)
 	}
 
-	router.GET("/books", getBooks)
+	router.GET("/books", func(context *gin.Context) {
+		context.IndentedJSON(http.StatusOK, books)
+	})
 	router.Run("localhost:9090")
+
 }
