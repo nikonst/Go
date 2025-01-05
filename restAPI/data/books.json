@@ -1,4 +1,101 @@
-[
-{"Id": "1", "Title": "One", "Author": "A1"},
-{"Id": "2", "Title": "Two", "Author": "A2"}
-]
+[{
+  "Id": 1,
+  "Title": "Enter the Void",
+  "Author": "Jolie Woffinden",
+  "Pages": 829
+}, {
+  "Id": 2,
+  "Title": "Bonds Beyond Time",
+  "Author": "Fonz Hains",
+  "Pages": 448
+}, {
+  "Id": 3,
+  "Title": "Moonlight Serenade",
+  "Author": "Rosina Studdal",
+  "Pages": 634
+}, {
+  "Id": 4,
+  "Title": "Ladrones",
+  "Author": "Johannah M'Quharge",
+  "Pages": 214
+}, {
+  "Id": 5,
+  "Title": "Rich in Love",
+  "Author": "Isaiah Hylands",
+  "Pages": 474
+}, {
+  "Id": 6,
+  "Title": "Django the Bastard (Strangers Gundown, The) (Django il bastardo)",
+  "Author": "Adrianna Bodycomb",
+  "Pages": 774
+}, {
+  "Id": 7,
+  "Title": "News from Home",
+  "Author": "Terri Hanscom",
+  "Pages": 328
+}, {
+  "Id": 8,
+  "Title": "Candidate, The (Kandidaten)",
+  "Author": "Michaelina Tooting",
+  "Pages": 739
+}, {
+  "Id": 9,
+  "Title": "Sleep, My Love",
+  "Author": "Jeanna Golds",
+  "Pages": 537
+}, {
+  "Id": 10,
+  "Title": "In the Shadow of Doubt (Epäilyksen varjossa)",
+  "Author": "Griffin Duchesne",
+  "Pages": 789
+}, {
+  "Id": 11,
+  "Title": "Samurai Vendetta",
+  "Author": "Windy Petrichat",
+  "Pages": 364
+}, {
+  "Id": 12,
+  "Title": "Deliver Us from Evil",
+  "Author": "Jone Kenn",
+  "Pages": 19
+}, {
+  "Id": 13,
+  "Title": "Strait-Jacket",
+  "Author": "Bobbie Corpes",
+  "Pages": 960
+}, {
+  "Id": 14,
+  "Title": "Breaker Morant",
+  "Author": "Lucio Water",
+  "Pages": 533
+}, {
+  "Id": 15,
+  "Title": "Hunger Games: Catching Fire, The",
+  "Author": "Artur Hailey",
+  "Pages": 830
+}, {
+  "Id": 16,
+  "Title": "Guard, The",
+  "Author": "Marcello Blodget",
+  "Pages": 216
+}, {
+  "Id": 17,
+  "Title": "Rebirth of Mothra III",
+  "Author": "Deerdre Burgoine",
+  "Pages": 324
+}, {
+  "Id": 18,
+  "Title": "Ben X",
+  "Author": "Harrietta Lillistone",
+  "Pages": 824
+}, {
+  "Id": 19,
+  "Title": "Hudsucker Proxy, The",
+  "Author": "Maribel Rentoll",
+  "Pages": 302
+}, {
+  "Id": 20,
+  "Title": "Reckless",
+  "Author": "Iorgo Molines",
+  "Pages": 701
+}]

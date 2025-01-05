@@ -12,9 +12,10 @@ import (
 )
 
 type Book struct {
-	Id     string `json:"id"`
+	Id     int    `json:"id"`
 	Title  string `json:"title"`
 	Author string `json:"author"`
+	Pages  int    `json:"pages"`
 }
 
 var books = []Book{}
@@ -58,9 +59,9 @@ func main() {
 	}
 
 	// Print the data
-	for _, book := range books {
-		fmt.Printf("Name: %s, Age: %s, Email: %s\n", book.Id, book.Title, book.Author)
-	}
+	// for _, book := range books {
+	// 	fmt.Printf("Name: %s, Age: %s, Email: %s\n", book.Id, book.Title, book.Author)
+	// }
 
 	router.GET("/books", func(context *gin.Context) {
 		context.IndentedJSON(http.StatusOK, books)
