@@ -1,6 +1,11 @@
 ###
-http://localhost:9090/books
+GET http://localhost:9090/books
 
 ###
-http://localhost:9090/books/1
+POST http://localhost:9090/books
+Content-Type: application/json
+
+{
+    "Id": "3", "Title": "Two", "Author": "A2"
+}
 

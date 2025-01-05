@@ -32,6 +32,7 @@ func postBooks(c *gin.Context) {
 	// Add the new album to the slice.
 	books = append(books, newBook)
 	c.IndentedJSON(http.StatusCreated, newBook)
+	fmt.Print(books)
 }
 
 func main() {
