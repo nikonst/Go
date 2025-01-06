@@ -12,7 +12,7 @@ type User struct {
 	Password string `json:"password"`
 }
 
-func readUsersFromFile() {
+func readUsersFromFile() []User {
 	jsonUsersFile, err := os.Open("data/users.json")
 	if err != nil {
 		log.Fatal(err)
@@ -30,6 +30,8 @@ func readUsersFromFile() {
 	if err := json.Unmarshal(byteUersValue, &users); err != nil {
 		log.Fatal(err)
 	}
+
+	return users
 }
 
 // Open the JSON file
