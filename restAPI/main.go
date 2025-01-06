@@ -37,6 +37,8 @@ func postBooks(c *gin.Context) {
 }
 
 func main() {
+	users := readUsersFromFile()
+	fmt.Print(users)
 	router := gin.Default()
 
 	// Open the JSON file
