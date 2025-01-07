@@ -20,20 +20,24 @@ type Book struct {
 
 var books = []Book{}
 
-// postAlbums adds an album from JSON received in the request body.
-func postBooks(c *gin.Context) {
-	var newBook Book
-
-	// Call BindJSON to bind the received JSON to
-	// newBook.
-	if err := c.BindJSON(&newBook); err != nil {
-		return
-	}
-
-	// Add the new album to the slice.
-	books = append(books, newBook)
-	c.IndentedJSON(http.StatusCreated, newBook)
+func main() {
+	users := readUsersFromFile()
+	fmt.Print(users)
+	router := gin.Default()
+	books := readBookData()
 	fmt.Print(books)
+	// Print the data
+	// for _, book := range books {
+	// 	fmt.Printf("Name: %s, Age: %s, Email: %s\n", book.Id, book.Title, book.Author)
+	// }
+
+	router.GET("/books", func(context *gin.Context) {
+		context.IndentedJSON(http.StatusOK, books)
+	})
+	router.POST("/books", postBooks)
+
+	router.Run("localhost:9090")
+
 }
 
 func readBookData() []Book {
@@ -59,22 +63,18 @@ func readBookData() []Book {
 
 }
 
-func main() {
-	users := readUsersFromFile()
-	fmt.Print(users)
-	router := gin.Default()
-	books := readBookData()
+// postAlbums adds an album from JSON received in the request body.
+func postBooks(c *gin.Context) {
+	var newBook Book
+
+	// Call BindJSON to bind the received JSON to
+	// newBook.
+	if err := c.BindJSON(&newBook); err != nil {
+		return
+	}
+
+	// Add the new album to the slice.
+	books = append(books, newBook)
+	c.IndentedJSON(http.StatusCreated, newBook)
 	fmt.Print(books)
-	// Print the data
-	// for _, book := range books {
-	// 	fmt.Printf("Name: %s, Age: %s, Email: %s\n", book.Id, book.Title, book.Author)
-	// }
-
-	router.GET("/books", func(context *gin.Context) {
-		context.IndentedJSON(http.StatusOK, books)
-	})
-	router.POST("/books", postBooks)
-
-	router.Run("localhost:9090")
-
 }
