@@ -36,11 +36,7 @@ func postBooks(c *gin.Context) {
 	fmt.Print(books)
 }
 
-func main() {
-	users := readUsersFromFile()
-	fmt.Print(users)
-	router := gin.Default()
-
+func readBookData() []Book {
 	// Open the JSON file
 	jsonFile, err := os.Open("data/books.json")
 	if err != nil {
@@ -59,7 +55,16 @@ func main() {
 	if err := json.Unmarshal(byteValue, &books); err != nil {
 		log.Fatal(err)
 	}
+	return books
 
+}
+
+func main() {
+	users := readUsersFromFile()
+	fmt.Print(users)
+	router := gin.Default()
+	books := readBookData()
+	fmt.Print(books)
 	// Print the data
 	// for _, book := range books {
 	// 	fmt.Printf("Name: %s, Age: %s, Email: %s\n", book.Id, book.Title, book.Author)
