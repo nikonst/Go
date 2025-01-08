@@ -28,14 +28,15 @@ type User struct {
 	Gender    string `json:"gender"`
 }
 
-var books = []Book{}
+var users []User
+var books []Book
 
 func main() {
-	users := readUsersFromFile()
+	users = readUsersFromFile()
 	fmt.Print(users)
 
 	router := gin.Default()
-	books := readBookData()
+	books = readBookData()
 	//fmt.Print(books)
 	// Print the data
 	// for _, book := range books {
