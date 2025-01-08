@@ -18,14 +18,25 @@ type Book struct {
 	Pages  int    `json:"pages"`
 }
 
+type User struct {
+	Id        int    `json:"id"`
+	Username  string `json:"username"`
+	Password  string `json:"password"`
+	Firstname string `json:"firstName"`
+	Lastname  string `json:"lastName"`
+	Email     string `json:"email"`
+	Gender    string `json:"gender"`
+}
+
 var books = []Book{}
 
 func main() {
 	users := readUsersFromFile()
 	fmt.Print(users)
+
 	router := gin.Default()
 	books := readBookData()
-	fmt.Print(books)
+	//fmt.Print(books)
 	// Print the data
 	// for _, book := range books {
 	// 	fmt.Printf("Name: %s, Age: %s, Email: %s\n", book.Id, book.Title, book.Author)
@@ -35,6 +46,7 @@ func main() {
 		context.IndentedJSON(http.StatusOK, books)
 	})
 	router.POST("/books", postBooks)
+	//router.POST("/login", userLogin)
 
 	router.Run("localhost:9090")
 

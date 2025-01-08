@@ -7,11 +7,6 @@ import (
 	"os"
 )
 
-type User struct {
-	Username string `json:"username"`
-	Password string `json:"password"`
-}
-
 func readUsersFromFile() []User {
 	jsonUsersFile, err := os.Open("data/users.json")
 	if err != nil {
