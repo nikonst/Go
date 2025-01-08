@@ -46,7 +46,7 @@ func main() {
 		context.IndentedJSON(http.StatusOK, books)
 	})
 	router.POST("/books", postBooks)
-	//router.POST("/login", userLogin)
+	router.POST("/login", userLogin)
 
 	router.Run("localhost:9090")
 
@@ -89,4 +89,33 @@ func postBooks(c *gin.Context) {
 	books = append(books, newBook)
 	c.IndentedJSON(http.StatusCreated, newBook)
 	fmt.Print(books)
+}
+
+func userLogin(c *gin.Context) {
+	type Credentials struct {
+		Username string `json:"username"`
+		Password string `json:"password"`
+	}
+
+	var creds Credentials
+
+	if err := c.BindJSON(&creds); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": "Invalid request"})
+		return
+	}
+
+	c.JSON(http.StatusOK, gin.H{"token": "hello"})
+	// for _, user := range users {
+	//     if user.Username == creds.Username && user.Password == creds.Password {
+	//         token, err := generateJWT(creds.Username)
+	//         if err != nil {
+	//             c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not generate token"})
+	//             return
+	//         }
+	//         c.JSON(http.StatusOK, gin.H{"token": token})
+	//         return
+	//     }
+	// }
+
+	c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid credentials"})
 }

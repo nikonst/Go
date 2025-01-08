@@ -9,3 +9,10 @@ Content-Type: application/json
     "Id": "3", "Title": "Two", "Author": "A2"
 }
 
+###
+POST http://localhost:9090/login
+Content-Type: application/json
+
+{
+    "one":"two"
+}
