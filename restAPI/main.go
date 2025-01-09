@@ -7,7 +7,9 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 
+	"github.com/dgrijalva/jwt-go"
 	"github.com/gin-gonic/gin"
 )
 
@@ -27,6 +29,13 @@ type User struct {
 	Email     string `json:"email"`
 	Gender    string `json:"gender"`
 }
+
+type Claims struct {
+	Username string `json:"username"`
+	jwt.StandardClaims
+}
+
+var jwtKey = []byte("secret_key")
 
 var users []User
 var books []Book
@@ -107,7 +116,13 @@ func userLogin(c *gin.Context) {
 
 	for _, a := range users {
 		if a.Username == creds.Username && a.Password == creds.Password {
-			fmt.Println("FOUND")
+			token, err := generateJWT(creds.Username)
+			if err != nil {
+				c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not generate token"})
+				return
+			}
+			c.JSON(http.StatusOK, gin.H{"token": token})
+			return
 		}
 	}
 	c.JSON(http.StatusOK, gin.H{"token": "hello"})
@@ -124,4 +139,17 @@ func userLogin(c *gin.Context) {
 	// }
 
 	//c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid credentials"})
+}
+
+func generateJWT(username string) (string, error) {
+	expirationTime := time.Now().Add(5 * time.Minute)
+	claims := &Claims{
+		Username: username,
+		StandardClaims: jwt.StandardClaims{
+			ExpiresAt: expirationTime.Unix(),
+		},
+	}
+
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+	return token.SignedString(jwtKey)
 }
