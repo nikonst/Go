@@ -105,6 +105,11 @@ func userLogin(c *gin.Context) {
 		return
 	}
 
+	for _, a := range users {
+		if a.Username == creds.Username && a.Password == creds.Password {
+			fmt.Println("FOUND")
+		}
+	}
 	c.JSON(http.StatusOK, gin.H{"token": "hello"})
 	// for _, user := range users {
 	//     if user.Username == creds.Username && user.Password == creds.Password {
@@ -118,5 +123,5 @@ func userLogin(c *gin.Context) {
 	//     }
 	// }
 
-	c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid credentials"})
+	//c.JSON(http.StatusUnauthorized, gin.H{"error": "Invalid credentials"})
 }

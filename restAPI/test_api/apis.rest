@@ -14,5 +14,6 @@ POST http://localhost:9090/login
 Content-Type: application/json
 
 {
-    "one":"two"
+    "username": "ebarstock0",
+    "password": "rW1,(}Qi4f"
 }
