@@ -114,8 +114,10 @@ func userLogin(c *gin.Context) {
 		return
 	}
 
+	var userFound bool = false
 	for _, a := range users {
 		if a.Username == creds.Username && a.Password == creds.Password {
+			userFound = true
 			token, err := generateJWT(creds.Username)
 			if err != nil {
 				c.JSON(http.StatusInternalServerError, gin.H{"error": "Could not generate token"})
@@ -125,7 +127,10 @@ func userLogin(c *gin.Context) {
 			return
 		}
 	}
-	c.JSON(http.StatusOK, gin.H{"token": "hello"})
+	if !userFound {
+		c.JSON(http.StatusOK, gin.H{"Found": false})
+	}
+
 	// for _, user := range users {
 	//     if user.Username == creds.Username && user.Password == creds.Password {
 	//         token, err := generateJWT(creds.Username)
